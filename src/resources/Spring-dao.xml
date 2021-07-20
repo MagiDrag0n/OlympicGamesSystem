@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+">
+
+    <!--DataSource:使用Spring的数据源替换Mybatis的位置-->
+    <!--数据源-->
+    <!--连接池
+         1、dbcp:半自动化操作，不能自动连接
+         2、c3p0:自动化操作（自动化的加载配置文件，并且可以自动设置到对象中！）
+         3、druid
+         4、hikari
+    -->
+      <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+          <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+          <property name="url" value="jdbc:mysql://localhost:3306/ogs_database?characterEncoding=utf8"/>
+          <property name="username" value="userMagi"/>
+          <property name="password" value="admin"/>
+      </bean>
+    <!--sqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/> <!--数据源-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>   <!--mybatis配置文件地址-->
+        <property name="mapperLocations" value="classpath:com/magidragon/dao/*.xml"/><!--mybatis的mapper的xml文件-->
+    </bean>
+    <!--配置dao接口扫描包，动态的实现了Dao接口可以注入到Spring容器中-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName"  value="sqlSessionFactory"/>
+        <!--要扫描的dao包-->
+        <property name="basePackage" value="dao文件夹路径"/>
+    </bean>
+    <!--sqlSessionTemplate配置-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+</beans>
