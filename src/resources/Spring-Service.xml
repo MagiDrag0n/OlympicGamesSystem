@@ -14,26 +14,29 @@
     http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!--扫描Service包-->
-    <context:component-scan base-package="com.francis.service"/>
-    <context:component-scan base-package="com.francis.dao"/>
+    <context:component-scan base-package="com.magidragon.service"/>
+    <context:component-scan base-package="com.magidragon.dao"/>
     <!--将业务类，注入到Spring，可以通过配置，或者注解实现-->
 
+    <!--informationServiceImpl @Service-->
 
     <!-- 配置声明式事务-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <!--配置事务通知-->
-    <tx:advice id="txAdvice" transaction-manager="transactionManager">
-        <tx:attributes>
-            <tx:method name="*" propagation="REQUIRED"/>
-        </tx:attributes>
-    </tx:advice>
+<!--    无效-->
 
-    <!--AOP-->
-    <aop:config>
-        <aop:pointcut id="txPointCut" expression="execution(* com.francis.dao.*.*(..))"/>
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
-    </aop:config>
+<!--    &lt;!&ndash;配置事务通知&ndash;&gt;-->
+<!--    <tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+<!--        <tx:attributes>-->
+<!--            <tx:method name="*" propagation="REQUIRED"/>-->
+<!--        </tx:attributes>-->
+<!--    </tx:advice>-->
+
+<!--    &lt;!&ndash;AOP&ndash;&gt;-->
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="txPointCut" expression="execution(* com.magidragon.dao.*.*(..))"/>-->
+<!--        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>-->
+<!--    </aop:config>-->
 </beans>

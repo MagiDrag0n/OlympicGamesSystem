@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-">
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--DataSource:使用Spring的数据源替换Mybatis的位置-->
     <!--数据源-->
@@ -14,8 +14,8 @@
          4、hikari
     -->
       <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-          <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-          <property name="url" value="jdbc:mysql://localhost:3306/ogs_database?characterEncoding=utf8"/>
+          <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+          <property name="url" value="jdbc:mysql://localhost:3306/ogs_database?serverTimezone=GMT&amp;characterEncoding=utf8&amp;useSSL=false"/>
           <property name="username" value="userMagi"/>
           <property name="password" value="admin"/>
       </bean>
@@ -29,7 +29,7 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName"  value="sqlSessionFactory"/>
         <!--要扫描的dao包-->
-        <property name="basePackage" value="dao文件夹路径"/>
+        <property name="basePackage" value="com.magidragon.dao"/>
     </bean>
     <!--sqlSessionTemplate配置-->
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">

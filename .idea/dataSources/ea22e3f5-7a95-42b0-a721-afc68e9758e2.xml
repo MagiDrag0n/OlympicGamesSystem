@@ -911,7 +911,7 @@ ALL PRIVILEGES|student\_oct20th!
     <table id="283" parent="4" name="gamedays"/>
     <table id="284" parent="4" name="gameinfo"/>
     <table id="285" parent="4" name="gameresults"/>
-    <table id="286" parent="4" name="informations"/>
+    <table id="286" parent="4" name="information"/>
     <table id="287" parent="4" name="judgeresult"/>
     <table id="288" parent="4" name="playerfeedback"/>
     <table id="289" parent="4" name="viewercomment"/>

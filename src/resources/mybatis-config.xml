@@ -6,4 +6,5 @@
     <typeAliases>
         <package name="com.magidragon.pojo"/>
     </typeAliases>
+
 </configuration>
