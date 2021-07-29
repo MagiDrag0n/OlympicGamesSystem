@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class information {
     private int id;
     private String name;
+    private String sex;
     private String password;
     private String email;
     private String phone;

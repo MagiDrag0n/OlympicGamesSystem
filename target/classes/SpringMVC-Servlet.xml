@@ -32,4 +32,13 @@
 <!--        </mvc:interceptor>-->
 <!--    </mvc:interceptors>-->
 
+<!--前后端分离，实现MVC处理跨域请求-->
+    <mvc:cors>
+        <!-- allowed-methods="*" --> <!-- 表示所有请求都有效 -->
+        <mvc:mapping path="/**" allowed-origins="*"
+                     allowed-methods="POST, GET, OPTIONS, DELETE, PUT"
+                     allowed-headers="Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+                     allow-credentials="true" />
+    </mvc:cors>
+
 </beans>
