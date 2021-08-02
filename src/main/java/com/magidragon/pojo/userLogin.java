@@ -3,6 +3,15 @@ package com.magidragon.pojo;
 public class userLogin {
     private String email;
     private String password;
+    private String limit;
+
+    public String getLimit() {
+        return limit;
+    }
+
+    public void setLimit(String limit) {
+        this.limit = limit;
+    }
 
     public String getEmail() {
         return email;
