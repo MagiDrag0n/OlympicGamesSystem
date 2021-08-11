@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.magidragon.dao.judgeresultMapper" >
+    <select id="queryAllJudgeresult" resultType="judgeresult">
+        SELECT * FROM ogs_database.judgeresult;
+    </select>
+
+    <select id="queryJudgeresultById" parameterType="int" resultType="judgeresult">
+        SELECT * FROM ogs_database.judgeresult WHERE playerID = #{playerID};
+    </select>
+
+    <insert id="addJudgeresult" parameterType="judgeresult">
+        INSERT INTO ogs_database.judgeresult (gameID, playerID, result, judgeID, judge_comment)
+        VALUES (#{gameID},#{playerID},#{result},#{judgeID},#{judge_comment});
+    </insert>
+
+    <delete id="deleteJudgeresultById" parameterType="int">
+        DELETE FROM ogs_database.judgeresult WHERE playerID = #{playerID} AND gameID = #{gameID};
+    </delete>
+
+    <update id="updateJudgeresultById" parameterType="judgeresult">
+        UPDATE ogs_database.judgeresult SET gameID = #{gameId}, playerID =#{playerID}, result = #{result},
+                                            judgeID = #{judgeID}, judge_comment = #{judge_comment};
+    </update>
+</mapper>

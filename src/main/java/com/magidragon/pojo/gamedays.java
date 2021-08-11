@@ -11,6 +11,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class gamedays {
     private int gameID;
-    private Date gameTime;
+    private String gameTime;
     private int player;
 }

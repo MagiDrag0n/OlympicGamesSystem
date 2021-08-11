@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.magidragon.dao.gameresultsMapper" >
+    <select id="queryAllgameresults" resultType="gameresults">
+        SELECT * FROM ogs_database.gameresults;
+    </select>
+
+    <insert id="addGameresults" parameterType="gameresults">
+        INSERT INTO ogs_database.gameresults (gameID, gameName, gameTime, gold, silver, bronze)
+        VALUES (#{gameID},#{gameName},#{gameTime},#{gold},#{silver},#{bronze});
+    </insert>
+
+    <delete id="deleteGameresultsById" parameterType="int">
+        DELETE FROM ogs_database.gameresults WHERE gameID = #{gameID};
+    </delete>
+
+    <update id="updateGameresults" parameterType="gameresults">
+        UPDATE ogs_database.gameresults SET gameID=#{gameID},gameName=#{gameName},gameTime=#{gameTime},
+                                            gold=#{gold},silver=#{silver},bronze=#{bronze} WHERE gameID=#{gameID};
+    </update>
+</mapper>

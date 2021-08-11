@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.magidragon.dao.gamedaysMapper" >
+    <select id="queryAllGamedays" resultType="gamedays">
+        SELECT * FROM ogs_database.gamedays
+        WHERE player = #{id};
+    </select>
+
+    <select id="queryAllMatch" resultType="gamedays">
+        SELECT * FROM ogs_database.gamedays;
+    </select>
+
+    <insert id="addGamedays">
+        INSERT INTO gamedays (gameID,gameTime,player)
+        VALUES(#{gameID},
+               (SELECT gameTime FROM gameinfo WHERE gameID = #{gameID}),
+               #{player});
+    </insert>
+
+    <delete id="deleteGamedaysById" parameterType="int">
+        DELETE FROM ogs_database.gamedays
+        WHERE player = #{id} AND gameID = #{GameID};
+    </delete>
+
+    <update id="updateGamedays" parameterType="gamedays">
+        UPDATE ogs_database.gamedays SET gameID=#{gameID},gameTime=#{gameTime},
+                                         player=#{id};
+    </update>
+</mapper>

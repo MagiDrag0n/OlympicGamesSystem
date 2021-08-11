@@ -2,6 +2,7 @@ package com.magidragon.service;
 
 import com.magidragon.pojo.information;
 import com.magidragon.dao.informationMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +18,14 @@ public class informationServiceImpl implements informationService{
     }
 
     @Override
-    public int addInformation(information information) {
-        return informationMapper.addInformation(information);
+    public int addInformation(String name,
+                              String sex,
+                              String password,
+                              String email,
+                              String phone,
+                              String major,
+                              int privilege) {
+        return informationMapper.addInformation(name, sex, password, email, phone, major, privilege);
     }
 
     @Override
@@ -27,8 +34,8 @@ public class informationServiceImpl implements informationService{
     }
 
     @Override
-    public int updateInformation(information information) {
-        return informationMapper.updateInformation(information);
+    public int updateInformation(int id, int privilege) {
+        return informationMapper.updateInformation(id, privilege);
     }
 
     @Override

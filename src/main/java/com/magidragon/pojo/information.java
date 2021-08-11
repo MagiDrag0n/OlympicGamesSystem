@@ -15,5 +15,5 @@ public class information {
     private String email;
     private String phone;
     private String major;
-    private int limit;
+    private int privilege;
 }

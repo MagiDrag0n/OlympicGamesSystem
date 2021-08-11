@@ -7,13 +7,19 @@ import java.util.List;
 
 public interface informationService {
     //增 成员信息
-    int addInformation(information information);
+    int addInformation(@Param("name")String name,
+                       @Param("sex")String sex,
+                       @Param("password")String password,
+                       @Param("email")String email,
+                       @Param("phone")String phone,
+                       @Param("major")String major,
+                       @Param("privilege")int privilege);
 
     //删 成员信息
     int deleteInformationById(int id);
 
     //改 成员信息
-    int updateInformation(information information);
+    int updateInformation(@Param("id")int id, @Param("privilege")int privilege);
 
     //查 特定成员信息
     information queryInformationById(int id);

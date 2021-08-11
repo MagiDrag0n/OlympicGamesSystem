@@ -5,7 +5,7 @@
 
 <mapper namespace="com.magidragon.dao.userLoginMapper" >
     <select id="userLogin" resultType="userLogin">
-        SELECT email,password,`limit` FROM ogs_database.information
+        SELECT email,password,privilege,id FROM ogs_database.information
         WHERE email = #{email} AND password = #{password};
     </select>
 </mapper>

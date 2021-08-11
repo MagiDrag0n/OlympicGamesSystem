@@ -18,21 +18,29 @@
     <servlet-name>springmvc</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-  
+
 <!--乱码过滤-->
   <filter>
-    <filter-name>encodingFilter</filter-name>
+    <filter-name>CharacterEncodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
     <init-param>
+      <!-- CharacterEncodingFilter中有两个参数 -->
+      <!-- 第一个是encoding，encoding是编码方式，将其改为UTF-8即可 -->
       <param-name>encoding</param-name>
-      <param-value>utf-8</param-value>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <!-- 第二个是forceEncoding，这是一个boolean类型变量，意思是是否要设置响应编码  -->
+      <!-- 设置为true，就会把响应编码方式改成encoding，即UTF-8 ，这样顺手就把响应编码乱码解决了 -->
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
     </init-param>
   </filter>
+
   <filter-mapping>
-    <filter-name>encodingFilter</filter-name>
+    <filter-name>CharacterEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-
 <!--Session自动过期-->
   <session-config>
     <session-timeout>15</session-timeout>

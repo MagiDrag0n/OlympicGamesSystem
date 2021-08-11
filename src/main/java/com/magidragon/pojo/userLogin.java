@@ -3,14 +3,23 @@ package com.magidragon.pojo;
 public class userLogin {
     private String email;
     private String password;
-    private String limit;
+    private String privilege;
+    private int id;
 
-    public String getLimit() {
-        return limit;
+    public int getId() {
+        return id;
     }
 
-    public void setLimit(String limit) {
-        this.limit = limit;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getPrivilege() {
+        return privilege;
+    }
+
+    public void setPrivilege(String privilege) {
+        this.privilege = privilege;
     }
 
     public String getEmail() {

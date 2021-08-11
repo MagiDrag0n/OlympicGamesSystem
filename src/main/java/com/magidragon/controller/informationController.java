@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Controller
@@ -26,25 +27,34 @@ public class informationController {
         return informationService.queryAllInformation();
     }
 
+    @CrossOrigin
     @RequestMapping("/addInformation")
     @ResponseBody
     //Integer -> 返回操作条数
-    public Integer addInformation(information information){
-        return informationService.addInformation(information);
+    public Integer addInformation(@RequestParam("name")String name,
+                                  @RequestParam("sex")String sex,
+                                  @RequestParam("password")String password,
+                                  @RequestParam("email")String email,
+                                  @RequestParam("phone")String phone,
+                                  @RequestParam("major")String major,
+                                  @RequestParam("privilege")int privilege){
+        System.out.println(name+password+email+phone+major+privilege);
+        return informationService.addInformation(name, sex, password, email, phone, major, privilege);
     }
 
-    @RequestMapping("deleteInformationById")
+    @RequestMapping("/deleteInformationById")
     @ResponseBody
     public Integer deleteInformationById(int id){
         return informationService.deleteInformationById(id);
 
     }
 
-    @RequestMapping("updateInformation")
+    //本来想设计成更新全部信息的，想想没必要，只更改为调整权限等级
+    @RequestMapping("/updateInformation")
     @ResponseBody
-    public Integer updateInformation(information information){
+    public Integer updateInformation(@RequestParam("id")int id, @RequestParam("privilege")int privilege){
         //information 内的userId是否正确传递？
-        return informationService.updateInformation(information);
+        return informationService.updateInformation(id,privilege);
     }
 
 //    @Autowired

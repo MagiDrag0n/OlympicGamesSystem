@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.magidragon.dao.informationMapper">
-    <insert id="addInformation" parameterType="information">
-        INSERT INTO ogs_database.information (name, password, email, phone, major, limit)
-        VALUES (#{name},#{password},#{email},#{phone},#{major},#{limit});
+    <insert id="addInformation">
+        INSERT INTO ogs_database.information (name, sex, password, email, phone, major, privilege)
+        VALUES (#{name},#{sex},#{password},#{email},#{phone},#{major},#{privilege});
     </insert>
 
     <delete id="deleteInformationById" parameterType="int">
@@ -14,9 +14,7 @@
     </delete>
 
     <update id="updateInformation" parameterType="information">
-        UPDATE ogs_database.information SET name=#{name},password=#{password},
-                                            email=#{email},phone=#{phone},
-                                            major=#{major},limit=#{limit} WHERE id = #{id};
+        UPDATE ogs_database.information SET privilege=#{privilege} WHERE id = #{id};
     </update>
 
     <select id="queryInformationById" parameterType="information" resultType="com.magidragon.pojo.information">
