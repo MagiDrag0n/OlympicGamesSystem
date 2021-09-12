@@ -30,8 +30,7 @@ public class gameinfoController {
                                @RequestParam("gameName")String gameName,
                                @RequestParam("gameTime")String gameTime,
                                @RequestParam("isFinal")String isFinal){
-        return gameinfoService.addGameinfo(gameID,gameName,gameTime,isFinal);
-    }
+        return gameinfoService.addGameinfo(gameID,gameName,gameTime,isFinal); }
 
     @CrossOrigin
     @ResponseBody

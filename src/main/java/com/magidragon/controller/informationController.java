@@ -52,7 +52,8 @@ public class informationController {
     //本来想设计成更新全部信息的，想想没必要，只更改为调整权限等级
     @RequestMapping("/updateInformation")
     @ResponseBody
-    public Integer updateInformation(@RequestParam("id")int id, @RequestParam("privilege")int privilege){
+    public Integer updateInformation(@RequestParam("id")int id,
+                                     @RequestParam("privilege")int privilege){
         //information 内的userId是否正确传递？
         return informationService.updateInformation(id,privilege);
     }
